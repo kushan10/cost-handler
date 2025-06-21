@@ -69,21 +69,26 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center p-4">
-      <h1 className="text-2xl font-bold mb-4">Price Decryptor</h1>
+    <div className=" bg-white shadow-lg rounded-lg p-6 w-full max-w-md mt-10">
+      <h1 className="text-xl font-bold mb-4 text-center">Price Decryptor</h1>
 
       <input
         type="text"
         value={code}
         maxLength={7}
-        onChange={(e) => setCode(e.target.value)}
-        className="border border-gray-300 p-2 rounded mb-4 text-center uppercase"
+        onChange={(e) => {
+          const lettersOnly = e.target.value
+            .replace(/[^a-zA-Z]/g, "")
+            .toUpperCase();
+          setCode(lettersOnly);
+        }}
+        className="border border-gray-300 p-2 rounded mb-4 w-full text-center uppercase"
         placeholder="Enter Code (1–7 letters)"
       />
 
       <button
         onClick={handleDecrypt}
-        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded w-full"
       >
         Show Price
       </button>

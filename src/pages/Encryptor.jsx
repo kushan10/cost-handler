@@ -63,8 +63,13 @@ const Encryptor = () => {
 
       <input
         type="text"
+        inputMode="numeric"
+        pattern="[0-9]*"
         value={price}
-        onChange={(e) => setPrice(e.target.value)}
+        onChange={(e) => {
+          const onlyNums = e.target.value.replace(/\D/g, "").slice(0, 7);
+          setPrice(onlyNums);
+        }}
         className="border border-gray-300 p-2 rounded mb-4 w-full text-center"
         placeholder="Enter Price (digits only)"
       />
@@ -73,7 +78,7 @@ const Encryptor = () => {
         onClick={handleEncrypt}
         className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded w-full"
       >
-        Encrypt
+        Encrypt Price
       </button>
 
       {code && (
