@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import Home from "./pages/Home";
 import Encryptor from "./pages/Encryptor";
+import BillPrinter from "./pages/Bill-printer";
 
 function App() {
   const [mode, setMode] = useState("decrypt");
@@ -36,6 +37,7 @@ function App() {
       </div>
 
       {mode === "decrypt" ? <Home /> : <Encryptor />}
+      <BillPrinter />
     </div>
   );
 }
